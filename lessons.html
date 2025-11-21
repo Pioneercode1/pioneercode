@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كودي | منصة تعليم البرمجة المتكاملة</title>
+    <!-- تضمين Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- style css -->
+     <link rel="stylesheet" href="./style-lessons.css">
+     <!-- js -->
+      <script defer src="./script-lessond.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-panel': '#1e293b',
+                        'brand-blue': '#4f46e5',
+                        'brand-accent': '#818cf8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <!-- شريط التنقل -->
+    <header class="bg-brand-panel border-b border-gray-700 z-20 shadow-md">
+        <div class="container mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-brand-blue to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <span class="font-bold text-white text-xl code-font">&lt;/&gt;</span>
+                </div>
+                <a href="#" class="text-2xl font-bold text-white tracking-wide">كودي <span
+                        class="text-brand-accent text-sm font-normal opacity-75">| تعلم البرمجة</span></a>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="text-gray-300 hover:text-brand-accent transition text-sm font-medium">المسارات</a>
+                <a href="#" class="text-gray-300 hover:text-brand-accent transition text-sm font-medium">التحديات</a>
+                <a href="#" class="text-gray-300 hover:text-brand-accent transition text-sm font-medium">المجتمع</a>
+                <button
+                    class="bg-brand-blue hover:bg-indigo-600 text-white px-5 py-2 rounded-lg font-bold transition shadow-lg shadow-indigo-500/20 text-sm">ابدأ
+                    مجاناً</button>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden relative">
+
+        <!-- القائمة الجانبية (Sidebar) -->
+        <aside id="sidebar"
+            class="absolute md:static inset-y-0 right-0 w-72 bg-brand-panel border-l border-gray-700 transform translate-x-full md:translate-x-0 transition-transform duration-300 z-30 flex flex-col">
+            <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    منهج الدورة
+                </h2>
+                <button id="close-sidebar" class="md:hidden text-gray-400 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="overflow-y-auto flex-1 p-3 space-y-6">
+                <!-- قسم الويب -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 mr-2">تطوير الويب
+                        (Front-End)</h3>
+                    <div class="space-y-1">
+                        <button onclick="loadLesson('html_intro')"
+                            class="lesson-link w-full text-right p-3 rounded-lg text-sm text-gray-300 flex items-center gap-3 active"
+                            data-id="html_intro">
+                            <span
+                                class="w-6 h-6 rounded-full bg-gray-700 text-xs flex items-center justify-center font-mono">1</span>
+                            مقدمة في HTML
+                        </button>
+                        <button onclick="loadLesson('css_colors')"
+                            class="lesson-link w-full text-right p-3 rounded-lg text-sm text-gray-300 flex items-center gap-3"
+                            data-id="css_colors">
+                            <span
+                                class="w-6 h-6 rounded-full bg-gray-700 text-xs flex items-center justify-center font-mono">2</span>
+                            الألوان في CSS
+                        </button>
+                        <button onclick="loadLesson('js_interaction')"
+                            class="lesson-link w-full text-right p-3 rounded-lg text-sm text-gray-300 flex items-center gap-3"
+                            data-id="js_interaction">
+                            <span
+                                class="w-6 h-6 rounded-full bg-gray-700 text-xs flex items-center justify-center font-mono">3</span>
+                            التفاعل بـ JavaScript
+                        </button>
+                    </div>
+                </div>
+
+                <!-- قسم بايثون -->
+                <div>
+                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 mr-2">برمجة سطح المكتب
+                        (Python)</h3>
+                    <div class="space-y-1">
+                        <button onclick="loadLesson('python_print')"
+                            class="lesson-link w-full text-right p-3 rounded-lg text-sm text-gray-300 flex items-center gap-3"
+                            data-id="python_print">
+                            <span
+                                class="w-6 h-6 rounded-full bg-gray-700 text-xs flex items-center justify-center font-mono">1</span>
+                            أول برنامج بايثون
+                        </button>
+                        <button onclick="loadLesson('python_loops')"
+                            class="lesson-link w-full text-right p-3 rounded-lg text-sm text-gray-300 flex items-center gap-3"
+                            data-id="python_loops">
+                            <span
+                                class="w-6 h-6 rounded-full bg-gray-700 text-xs flex items-center justify-center font-mono">2</span>
+                            الحلقات التكرارية
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- منطقة المحتوى -->
+        <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#0b1120]">
+
+            <!-- المحتوى القابل للتمرير -->
+            <div class="flex-1 overflow-y-auto p-4 md:p-8">
+                <div class="max-w-5xl mx-auto">
+
+                    <!-- عنوان الدرس والشرح -->
+                    <div class="mb-8 animate-fade-in">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-bold rounded border border-indigo-500/20">درس
+                                تفاعلي</span>
+                            <span id="track-badge"
+                                class="px-2 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-bold rounded border border-emerald-500/20">HTML</span>
+                        </div>
+                        <h1 id="lesson-title" class="text-3xl font-bold text-white mb-4 leading-tight"></h1>
+                        <div id="lesson-desc" class="prose prose-invert prose-lg text-gray-300 max-w-none">
+                            <!-- سيتم حقن المحتوى هنا -->
+                        </div>
+                    </div>
+
+                    <!-- منطقة العمل (المحرر + المعاينة) -->
+                    <div class="grid lg:grid-cols-2 gap-6 h-[500px] lg:h-[450px]">
+
+                        <!-- المحرر -->
+                        <div class="code-editor-container flex flex-col h-full">
+                            <div class="editor-header border-b border-gray-700">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-mono text-gray-400 flex items-center gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                            </path>
+                                        </svg>
+                                        editor.code
+                                    </span>
+                                </div>
+                                <div class="window-controls" dir="ltr">
+                                    <div class="control-dot dot-red"></div>
+                                    <div class="control-dot dot-yellow"></div>
+                                    <div class="control-dot dot-green"></div>
+                                </div>
+                            </div>
+                            <div class="relative flex-1 bg-[#0f172a]">
+                                <!-- ترقيم الأسطر البسيط -->
+                                <div
+                                    class="absolute left-0 top-0 bottom-0 w-8 bg-[#0f172a] border-r border-gray-800 text-gray-600 text-xs font-mono pt-4 text-center select-none">
+                                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12
+                                </div>
+                                <textarea id="code-area" class="code-input code-font h-full pl-10"
+                                    spellcheck="false"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- الناتج -->
+                        <div
+                            class="code-editor-container flex flex-col h-full border-indigo-500/30 shadow-indigo-900/10">
+                            <div class="editor-header border-b border-gray-700 bg-gray-900">
+                                <span class="text-xs font-bold text-gray-300 tracking-wider">المُخرجات (OUTPUT)</span>
+                                <button onclick="runCode()"
+                                    class="run-btn bg-green-600 hover:bg-green-500 text-white px-4 py-1 rounded text-xs font-bold flex items-center gap-1 transition">
+                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    تشغيل
+                                </button>
+                            </div>
+                            <div class="flex-1 relative bg-white overflow-hidden">
+                                <!-- Iframe for Web Preview -->
+                                <iframe id="preview-frame" class="w-full h-full border-none hidden"></iframe>
+                                <!-- Div for Console/Terminal -->
+                                <div id="terminal-output" class="terminal-container hidden">
+                                    <div class="opacity-50 mb-2">> النظام جاهز...</div>
+                                </div>
+                                <!-- Placeholder State -->
+                                <div id="empty-state"
+                                    class="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-gray-500">
+                                    <svg class="w-12 h-12 mb-2 opacity-50" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.26a1 1 0 001.555.832l3.197-2.132c.245-.163.245-.595 0-.758z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <p class="text-sm">اضغط "تشغيل" لرؤية النتيجة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- أزرار التنقل -->
+                    <div class="mt-8 flex justify-between items-center border-t border-gray-800 pt-6 pb-10">
+                        <button id="prev-btn"
+                            class="text-gray-400 hover:text-white flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                            الدرس السابق
+                        </button>
+
+                        <button id="next-btn"
+                            class="bg-brand-blue hover:bg-indigo-600 text-white flex items-center gap-2 px-6 py-2 rounded-lg transition shadow-lg shadow-indigo-500/20 disabled:opacity-50 disabled:cursor-not-allowed">
+                            الدرس التالي
+                            <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- تراكب للخلفية عند فتح القائمة في الجوال -->
+        <div id="overlay" class="fixed inset-0 bg-black/50 z-20 hidden md:hidden backdrop-blur-sm"></div>
+    </div>
+
+</body>
+
+</html>
