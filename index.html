@@ -15,9 +15,8 @@
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- css -->
-    <link rel="stylesheet" href="/style.css">
-    <!-- js -->
-     <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
@@ -30,115 +29,62 @@
             <i class="fa-solid fa-code" style="color: #a78bfa;"></i> Pioneercode
         </div>
         <ul class="nav-links">
-            <li><a href="./index.html" class="active">Home</a></li>
-            <li><a href="./lessons.html">Tracks</a></li>
+            <li><a href="./index.html" class="active">الرئيسية</a></li>
+            <li><a href="./lessons.html">الدورات التعليمية</a></li>
             <!-- <li><a href="#">Projects</a></li> -->
             <!-- <li><a href="#">Pro</a></li> -->
         </ul>
-        <button class="btn-nav" onclick="scrollToLearning()">Get Started</button>
+        <button class="btn-nav">Get Started</button>
     </nav>
+    <div class="container">
 
-    <header class="hero">
-        <h1 class="text-gradient">Code Your Future.</h1> <br><br>
-        <h1>Learn Programming from <br><span class="text-gradient">Zero to Professional</span></h1>
-        <p>Interactive, simple, and structured. Master Web Development, AI, and Mobile Apps with our futuristic learning
-            platform.</p>
-        <div class="hero-btns">
-            <button class="btn-primary" onclick="scrollToLearning()">Start Learning</button>
-            <!-- <button class="btn-secondary">Browse Tracks</button> -->
-        </div>
-    </header>
-    
-    <section class="tracks">
-        <div class="card glass">
-            <div class="card-icon"><i class="fa-brands fa-html5"></i></div>
-            <h3>Web Development</h3>
-            <p style="color:var(--text-muted);">Master HTML, CSS, JS, and React.</p>
-        </div>
-        <div class="card glass">
-            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3>Mobile Apps</h3>
-            <p style="color:var(--text-muted);">Build iOS & Android apps with Flutter.</p>
-        </div>
-        <div class="card glass">
-            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-            <h3>AI & Data</h3>
-            <p style="color:var(--text-muted);">Machine Learning, Python & Neural Networks.</p>
-        </div>
-    </section>
-
-    <section id="learning-platform" class="learning-area">
-
-        <aside class="sidebar">
-            <div class="sidebar-title">Web Development Track</div>
-            <div class="lesson-item active"><i class="fa-regular fa-circle-check"></i> Intro to HTML</div>
-            <div class="lesson-item"><i class="fa-regular fa-circle"></i> CSS Styling</div>
-            <div class="lesson-item"><i class="fa-regular fa-circle"></i> JavaScript Basics</div>
-            <div class="lesson-item"><i class="fa-regular fa-circle"></i> DOM Manipulation</div>
-            <div class="sidebar-title" style="margin-top: 20px;">Projects</div>
-            <div class="lesson-item"><i class="fa-solid fa-laptop-code"></i> Build a Dashboard</div>
-        </aside>
-
-        <article class="content-pane">
-            <div class="breadcrumb">Web Dev > Intro to HTML > Structure</div>
-            <h2>Understanding HTML & JS</h2>
-            <p>HTML provides structure, CSS provides style, and JavaScript provides interactivity. Today we will focus
-                on connecting them.</p>
-
-            <h3>The Code Editor</h3>
-            <p>The editor on the right is a full simulation. It supports:</p>
-            <ul>
-                <li style="color:var(--text-muted); margin: 10px 0 10px 20px;">Syntax Indentation (Tab)</li>
-                <li style="color:var(--text-muted); margin: 10px 0 10px 20px;">Auto-closing brackets</li>
-                <li style="color:var(--text-muted); margin: 10px 0 10px 20px;"><strong>Live Console</strong> logging
-                </li>
-                <li style="color:var(--text-muted); margin: 10px 0 10px 20px;">Auto-save to LocalStorage</li>
-            </ul>
-            <br>
-            <p>Try changing the text inside the <code>&lt;h1&gt;</code> tag or check the <strong>Console Tab</strong> to
-                see the JavaScript timer running.</p>
-        </article>
-
-        <div class="editor-pane">
-            <div class="editor-header">
-                <div class="tabs">
-                    <span style="color: #a78bfa; font-weight: bold; font-size: 0.9rem;">playground.html</span>
-                </div>
-                <button id="runBtn" class="run-btn" onclick="runCode()">
-                    <i class="fa-solid fa-play"></i> Run Code
-                </button>
+        <header class="hero">
+            <h1 class="text-gradient">Code Your Future.</h1> <br><br>
+            <h1>Learn Programming from <br><span class="text-gradient">Zero to Professional</span></h1>
+            <p>Interactive, simple, and structured. Master Web Development, AI, and Mobile Apps with our futuristic
+                learning
+                platform.</p>
+            <div class="hero-btns">
+                <button class="btn-nav btn-primary">العلم نور</button>
+                <!-- <button class="btn-secondary">Browse Tracks</button> -->
+                <a style="text-decoration: none;" class="btn-nav btn-secondary" href="./lessons.html">الدورات
+                    التعليمية</a>
             </div>
+        </header>
 
-            <div class="editor-grid">
-                <div class="code-wrapper">
-                    <div id="lineNumbers" class="line-numbers">1</div>
-                    <textarea id="codeEditor" spellcheck="false"></textarea>
-                </div>
-
-                <div class="output-wrapper">
-                    <div class="output-tabs">
-                        <div id="tab-preview" class="out-tab active" onclick="switchOutputTab('preview')">
-                            <i class="fa-regular fa-eye"></i> Preview
-                        </div>
-                        <div id="tab-console" class="out-tab" onclick="switchOutputTab('console')">
-                            <i class="fa-solid fa-terminal"></i> Console
-                        </div>
-                    </div>
-
-                    <div id="view-preview" class="output-view active">
-                        <iframe id="previewFrame"></iframe>
-                    </div>
-
-                    <div id="view-console" class="output-view">
-                        <div id="consoleOutput">
-                            <div class="log-entry" style="color:#888">// Console Ready</div>
-                        </div>
-                    </div>
-                </div>
+        <section class="tracks">
+            <div class="card glass">
+                <div class="card-icon"><i class="fa-brands fa-html5"></i></div>
+                <h3>Web Development</h3>
+                <p style="color:var(--text-muted);">Master HTML, CSS, JS, and React.</p>
             </div>
-        </div>
+            <div class="card glass">
+                <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3>Mobile Apps</h3>
+                <p style="color:var(--text-muted);">Build iOS & Android apps with Flutter.</p>
+            </div>
+            <div class="card glass">
+                <div class="card-icon"><i class="fa-solid fa-c"></i></div>
+                <h3>.NET applications & Desktop Apps</h3>
+                <p style="color:var(--text-muted);">.NET applications, C# & .NET Multi-platform App UI & Machine
+                    Learning
+                </p>
+            </div>
+            <div class="card glass">
+                <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                <h3>AI & Data</h3>
+                <p style="color:var(--text-muted);">Machine Learning, Python & Neural Networks.</p>
+            </div>
+        </section>
 
-    </section>
+    </div>
+
+    <footer class="footer-container">
+        <a href="http://"><i class="fa-brands fa-square-facebook fa-2xl" style="color: #0091ff;"></i></a>
+        <a href="http://"><i class="fa-brands fa-github fa-2xl" style="color: #ffffff;"></i></a>
+        <a href="http://"><i class="fa-brands fa-twitter fa-2xl" style="color: #74C0FC;"></i></a>
+        <a href="http://"><i class="fa-brands fa-linkedin fa-2xl" style="color: #ffffff;"></i></a>
+    </footer>
 
 </body>
 
